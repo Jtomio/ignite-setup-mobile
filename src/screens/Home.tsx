@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, Alert } from "react-native";
-import { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useCallback, useState } from "react";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { HabitDay, day_Size } from "../components/HabitDay";
 import { Header } from "../components/Header";
 import { generateRangeDatesFromYearStart } from '../utils/genereate-range-between-dates'
@@ -45,9 +45,9 @@ export function Home() {
     }
   }
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     fetchData()
-  }, [])
+  }, []))
 
   if (loading) {
     return (
